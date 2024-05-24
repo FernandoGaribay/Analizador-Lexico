@@ -47,7 +47,6 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1200, 600));
-        setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -186,6 +185,7 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
         pnlAnalizadorLexico.setBounds(900, 0, 300, 600);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtEditorCodigoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEditorCodigoKeyPressed

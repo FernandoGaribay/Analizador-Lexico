@@ -115,9 +115,9 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
         pnlEditorCodigoLayout.setHorizontalGroup(
             pnlEditorCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEditorCodigoLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
                 .addGroup(pnlEditorCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlEditorCodigoLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
                         .addComponent(btnAbrirArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnGuardarArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -127,10 +127,13 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
                         .addComponent(btnAnalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEditorCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(scrollEditorCodigo)
-                        .addComponent(scrollResultadoAnalizador, javax.swing.GroupLayout.DEFAULT_SIZE, 865, Short.MAX_VALUE)))
-                .addGap(21, 21, 21))
+                    .addGroup(pnlEditorCodigoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(scrollEditorCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 877, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlEditorCodigoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(scrollResultadoAnalizador, javax.swing.GroupLayout.PREFERRED_SIZE, 877, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
         pnlEditorCodigoLayout.setVerticalGroup(
             pnlEditorCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,9 +148,9 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
                         .addComponent(btnAbrirArchivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(scrollEditorCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(scrollResultadoAnalizador, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(272, 272, 272))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(scrollResultadoAnalizador, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(266, 266, 266))
         );
 
         getContentPane().add(pnlEditorCodigo);
@@ -177,8 +180,8 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
             pnlAnalizadorLexicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlAnalizadorLexicoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scrollAnalizadorLexico, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addComponent(scrollAnalizadorLexico, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         getContentPane().add(pnlAnalizadorLexico);

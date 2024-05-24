@@ -195,7 +195,7 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
     private void btnAbrirArchivoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAbrirArchivoMousePressed
         // Crear un hilo secundario para esperar la seleccion del archivo
         Thread hiloFileChooser = new Thread(() -> {
-            String archivoPath = new FileChooserFrame().showFileChooserFrame();
+            String archivoPath = new FileChooserFrame().abrirArchivo();
             if (archivoPath != null) {
                 System.out.println("Archivo seleccionado: " + archivoPath);
             } 
@@ -204,7 +204,14 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAbrirArchivoMousePressed
 
     private void btnGuardarArchivoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarArchivoMousePressed
-
+        // Crear un hilo secundario para esperar la seleccion del archivo
+        Thread hiloFileChooser = new Thread(() -> {
+            String archivoPath = new FileChooserFrame().seleccionarRuta();
+            if (archivoPath != null) {
+                System.out.println("Ruta seleccionada: " + archivoPath);
+            } 
+        });
+        hiloFileChooser.start();
     }//GEN-LAST:event_btnGuardarArchivoMousePressed
 
     private void btnAnalizarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnalizarMousePressed

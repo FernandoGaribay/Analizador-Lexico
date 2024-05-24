@@ -1,8 +1,12 @@
 package analizador_lexico;
 
 import componentes.FileChooserFrame;
+import componentes.LectorArchivos;
 import componentes.TextLineNumber;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelos_tablas.ModeloAnalizadorLexico;
 import modelos_tablas.ModeloResultadoAnalizado;
@@ -12,16 +16,16 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
     public AnalizadorLexicoUI() {
         initComponents();
         clearCampos();
-        
+
         TextLineNumber tln = new TextLineNumber(txtEditorCodigo);
         scrollEditorCodigo.setRowHeaderView(tln);
     }
 
-    private void clearCampos(){
+    private void clearCampos() {
         tableAnalizadorLexico.setModel(new ModeloAnalizadorLexico());
         tableResultadoAnalizado.setModel(new ModeloResultadoAnalizado());
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -115,25 +119,21 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
         pnlEditorCodigoLayout.setHorizontalGroup(
             pnlEditorCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEditorCodigoLayout.createSequentialGroup()
-                .addGroup(pnlEditorCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(pnlEditorCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(pnlEditorCodigoLayout.createSequentialGroup()
-                        .addGap(28, 28, 28)
                         .addComponent(btnAbrirArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnGuardarArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 655, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAnalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEditorCodigoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(scrollEditorCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 877, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlEditorCodigoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(scrollResultadoAnalizador, javax.swing.GroupLayout.PREFERRED_SIZE, 877, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(9, Short.MAX_VALUE))
+                    .addComponent(scrollEditorCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 877, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(scrollResultadoAnalizador, javax.swing.GroupLayout.PREFERRED_SIZE, 877, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         pnlEditorCodigoLayout.setVerticalGroup(
             pnlEditorCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,7 +200,7 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
             String newTextoCursorPosicion = textoCursorPosicion.substring(0, cursorPosicion) + "     " + textoCursorPosicion.substring(cursorPosicion);
 
             txtEditorCodigo.setText(newTextoCursorPosicion);
-            txtEditorCodigo.setCaretPosition(cursorPosicion + 5);
+            txtEditorCodigo.setCaretPosition(cursorPosicion + 4);
         }
     }//GEN-LAST:event_txtEditorCodigoKeyPressed
 
@@ -209,10 +209,17 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
         Thread hiloFileChooser = new Thread(() -> {
             String archivoPath = new FileChooserFrame().abrirArchivo();
             if (archivoPath != null) {
-                System.out.println("Archivo seleccionado: " + archivoPath);
+                try {
+                    System.out.println("Archivo seleccionado: " + archivoPath);
+                    txtEditorCodigo.setText(LectorArchivos.leerArchivo(archivoPath));
+                } catch (IOException ex) {
+                    Logger.getLogger(AnalizadorLexicoUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
         hiloFileChooser.start();
+
+
     }//GEN-LAST:event_btnAbrirArchivoMousePressed
 
     private void btnGuardarArchivoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarArchivoMousePressed
@@ -232,7 +239,7 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
 
     private void btnClearMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClearMousePressed
         JOptionPane.showMessageDialog(null, "* evento para vaciar los componentes *");
-        
+
         clearCampos();
     }//GEN-LAST:event_btnClearMousePressed
 

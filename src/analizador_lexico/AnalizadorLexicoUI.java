@@ -4,16 +4,23 @@ import componentes.FileChooserFrame;
 import componentes.TextLineNumber;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
+import modelos_tablas.ModeloAnalizadorLexico;
 
 public class AnalizadorLexicoUI extends javax.swing.JFrame {
 
     public AnalizadorLexicoUI() {
         initComponents();
-
+        clearCampos();
+        
         TextLineNumber tln = new TextLineNumber(txtEditorCodigo);
         scrollEditorCodigo.setRowHeaderView(tln);
     }
 
+    private void clearCampos(){
+        ModeloAnalizadorLexico model = new ModeloAnalizadorLexico();
+        tableAnalizadorLexico.setModel(model);
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -145,15 +152,13 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
 
         tableAnalizadorLexico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "LEXEMA", "TOKEN", "LINEA", "PALABRA"
+
             }
         ));
+        tableAnalizadorLexico.setRowHeight(22);
         scrollAnalizadorLexico.setViewportView(tableAnalizadorLexico);
 
         javax.swing.GroupLayout pnlAnalizadorLexicoLayout = new javax.swing.GroupLayout(pnlAnalizadorLexico);
@@ -221,6 +226,8 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
 
     private void btnClearMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClearMousePressed
         JOptionPane.showMessageDialog(null, "* evento para vaciar los componentes *");
+        
+        clearCampos();
     }//GEN-LAST:event_btnClearMousePressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

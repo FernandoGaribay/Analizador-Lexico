@@ -22,6 +22,7 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
     }
 
     private void clearCampos() {
+        txtEditorCodigo.setText("");
         tableAnalizadorLexico.setModel(new ModeloAnalizadorLexico());
         tableResultadoAnalizado.setModel(new ModeloResultadoAnalizado());
     }
@@ -84,13 +85,10 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
 
         tableResultadoAnalizado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "", "LINEA", "SINTAXIS", "DETALLE"
+
             }
         ));
         tableResultadoAnalizado.setRowHeight(21);

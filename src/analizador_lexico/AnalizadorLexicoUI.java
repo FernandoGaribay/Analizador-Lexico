@@ -1,5 +1,6 @@
 package analizador_lexico;
 
+import componentes.FileChooserFrame;
 import componentes.TextLineNumber;
 import java.awt.event.KeyEvent;
 
@@ -51,13 +52,21 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
 
         btnGuardarArchivo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnGuardarArchivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/saveFile.png"))); // NOI18N
-        btnGuardarArchivo.setToolTipText("");
         btnGuardarArchivo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardarArchivo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnGuardarArchivoMousePressed(evt);
+            }
+        });
 
         btnAbrirArchivo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnAbrirArchivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/openFile.png"))); // NOI18N
-        btnAbrirArchivo.setToolTipText("");
         btnAbrirArchivo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAbrirArchivo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnAbrirArchivoMousePressed(evt);
+            }
+        });
 
         tableResultadoAnalizador.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -74,13 +83,21 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
 
         btnClear.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/clear.png"))); // NOI18N
-        btnClear.setToolTipText("");
         btnClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnClear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnClearMousePressed(evt);
+            }
+        });
 
         btnAnalizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnAnalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/analizar.png"))); // NOI18N
-        btnAnalizar.setToolTipText("");
         btnAnalizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAnalizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnAnalizarMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlEditorCodigoLayout = new javax.swing.GroupLayout(pnlEditorCodigo);
         pnlEditorCodigo.setLayout(pnlEditorCodigoLayout);
@@ -174,6 +191,29 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
             txtEditorCodigo.setCaretPosition(cursorPosicion + 5);
         }
     }//GEN-LAST:event_txtEditorCodigoKeyPressed
+
+    private void btnAbrirArchivoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAbrirArchivoMousePressed
+        // Crear un hilo secundario para esperar la seleccion del archivo
+        Thread hiloFileChooser = new Thread(() -> {
+            String archivoPath = new FileChooserFrame().showFileChooserFrame();
+            if (archivoPath != null) {
+                System.out.println("Archivo seleccionado: " + archivoPath);
+            } 
+        });
+        hiloFileChooser.start();
+    }//GEN-LAST:event_btnAbrirArchivoMousePressed
+
+    private void btnGuardarArchivoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarArchivoMousePressed
+
+    }//GEN-LAST:event_btnGuardarArchivoMousePressed
+
+    private void btnAnalizarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnalizarMousePressed
+
+    }//GEN-LAST:event_btnAnalizarMousePressed
+
+    private void btnClearMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClearMousePressed
+
+    }//GEN-LAST:event_btnClearMousePressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnAbrirArchivo;

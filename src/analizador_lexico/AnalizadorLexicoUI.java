@@ -1,12 +1,13 @@
-package analizadorlexico;
+package analizador_lexico;
 
 import componentes.TextLineNumber;
+import java.awt.event.KeyEvent;
 
 public class AnalizadorLexicoUI extends javax.swing.JFrame {
 
     public AnalizadorLexicoUI() {
         initComponents();
-        
+
         TextLineNumber tln = new TextLineNumber(txtEditorCodigo);
         scrollEditorCodigo.setRowHeaderView(tln);
     }
@@ -30,7 +31,6 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
         tableAnalizadorLexico = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1200, 600));
         setMinimumSize(new java.awt.Dimension(1200, 600));
         setUndecorated(true);
         setResizable(false);
@@ -38,6 +38,11 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
 
         pnlEditorCodigo.setBackground(new java.awt.Color(255, 255, 255));
 
+        txtEditorCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEditorCodigoKeyPressed(evt);
+            }
+        });
         scrollEditorCodigo.setViewportView(txtEditorCodigo);
 
         lblTitulo.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
@@ -103,12 +108,13 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
             pnlEditorCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEditorCodigoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlEditorCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlEditorCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnGuardarArchivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAbrirArchivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAnalizar)
-                    .addComponent(btnClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnlEditorCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAbrirArchivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(scrollEditorCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -154,6 +160,20 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtEditorCodigoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEditorCodigoKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_TAB) {
+            evt.consume();
+
+            int cursorPosicion = txtEditorCodigo.getCaretPosition();
+            String textoCursorPosicion = txtEditorCodigo.getText();
+
+            String newTextoCursorPosicion = textoCursorPosicion.substring(0, cursorPosicion) + "     " + textoCursorPosicion.substring(cursorPosicion);
+
+            txtEditorCodigo.setText(newTextoCursorPosicion);
+            txtEditorCodigo.setCaretPosition(cursorPosicion + 5);
+        }
+    }//GEN-LAST:event_txtEditorCodigoKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnAbrirArchivo;

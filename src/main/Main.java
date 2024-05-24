@@ -1,6 +1,6 @@
 package main;
 
-import analizadorlexico.AnalizadorLexicoUI;
+import analizador_lexico.AnalizadorLexicoUI;
 
 public class Main {
 

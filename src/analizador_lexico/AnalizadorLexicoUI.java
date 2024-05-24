@@ -5,6 +5,7 @@ import componentes.TextLineNumber;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import modelos_tablas.ModeloAnalizadorLexico;
+import modelos_tablas.ModeloResultadoAnalizado;
 
 public class AnalizadorLexicoUI extends javax.swing.JFrame {
 
@@ -17,8 +18,8 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
     }
 
     private void clearCampos(){
-        ModeloAnalizadorLexico model = new ModeloAnalizadorLexico();
-        tableAnalizadorLexico.setModel(model);
+        tableAnalizadorLexico.setModel(new ModeloAnalizadorLexico());
+        tableResultadoAnalizado.setModel(new ModeloResultadoAnalizado());
     }
     
     @SuppressWarnings("unchecked")
@@ -32,7 +33,7 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
         btnGuardarArchivo = new javax.swing.JLabel();
         btnAbrirArchivo = new javax.swing.JLabel();
         scrollResultadoAnalizador = new javax.swing.JScrollPane();
-        tableResultadoAnalizador = new javax.swing.JTable();
+        tableResultadoAnalizado = new javax.swing.JTable();
         btnClear = new javax.swing.JLabel();
         btnAnalizar = new javax.swing.JLabel();
         pnlAnalizadorLexico = new javax.swing.JPanel();
@@ -76,7 +77,7 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
             }
         });
 
-        tableResultadoAnalizador.setModel(new javax.swing.table.DefaultTableModel(
+        tableResultadoAnalizado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -87,7 +88,8 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
                 "", "LINEA", "SINTAXIS", "DETALLE"
             }
         ));
-        scrollResultadoAnalizador.setViewportView(tableResultadoAnalizador);
+        tableResultadoAnalizado.setRowHeight(21);
+        scrollResultadoAnalizador.setViewportView(tableResultadoAnalizado);
 
         btnClear.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/clear.png"))); // NOI18N
@@ -242,7 +244,7 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane scrollEditorCodigo;
     private javax.swing.JScrollPane scrollResultadoAnalizador;
     private javax.swing.JTable tableAnalizadorLexico;
-    private javax.swing.JTable tableResultadoAnalizador;
+    private javax.swing.JTable tableResultadoAnalizado;
     private javax.swing.JTextPane txtEditorCodigo;
     // End of variables declaration//GEN-END:variables
 }

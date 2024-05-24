@@ -3,6 +3,7 @@ package analizador_lexico;
 import componentes.FileChooserFrame;
 import componentes.TextLineNumber;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 public class AnalizadorLexicoUI extends javax.swing.JFrame {
 
@@ -198,7 +199,7 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
             String archivoPath = new FileChooserFrame().abrirArchivo();
             if (archivoPath != null) {
                 System.out.println("Archivo seleccionado: " + archivoPath);
-            } 
+            }
         });
         hiloFileChooser.start();
     }//GEN-LAST:event_btnAbrirArchivoMousePressed
@@ -209,17 +210,17 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
             String archivoPath = new FileChooserFrame().seleccionarRuta();
             if (archivoPath != null) {
                 System.out.println("Ruta seleccionada: " + archivoPath);
-            } 
+            }
         });
         hiloFileChooser.start();
     }//GEN-LAST:event_btnGuardarArchivoMousePressed
 
     private void btnAnalizarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnalizarMousePressed
-
+        JOptionPane.showMessageDialog(null, "* evento para iniciar el analisis del archivo *");
     }//GEN-LAST:event_btnAnalizarMousePressed
 
     private void btnClearMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClearMousePressed
-
+        JOptionPane.showMessageDialog(null, "* evento para vaciar los componentes *");
     }//GEN-LAST:event_btnClearMousePressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

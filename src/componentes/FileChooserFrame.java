@@ -22,7 +22,7 @@ public class FileChooserFrame {
         frame.setResizable(false);
         frame.setUndecorated(true);
 
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos de texto (.txt .java .cpp .py)", "txt", "java", "cpp", "py");
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivos de texto (.txt)", "txt");
         fc = new JFileChooser();
         fc.setFileFilter(filtro);
 

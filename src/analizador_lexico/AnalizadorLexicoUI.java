@@ -48,6 +48,7 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
 
         pnlEditorCodigo.setBackground(new java.awt.Color(255, 255, 255));
 
+        txtEditorCodigo.setFont(new java.awt.Font("sansserif", 0, 16)); // NOI18N
         txtEditorCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtEditorCodigoKeyPressed(evt);

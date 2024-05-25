@@ -6,7 +6,7 @@ public class Main {
 
     // Fernando Garibay Ceja.
     // Joseph Ivan Quintero Carrasco.
-    // 5M
+    // 6M
     
     public static void main(String[] args) {
         try {

@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
 import modelos_tablas.ModeloAnalizadorLexico;
 import modelos_tablas.ModeloResultadoAnalizado;
 
@@ -200,12 +202,14 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
             evt.consume();
 
             int cursorPosicion = txtEditorCodigo.getCaretPosition();
-            String textoCursorPosicion = txtEditorCodigo.getText();
+            Document doc = txtEditorCodigo.getDocument();
 
-            String newTextoCursorPosicion = textoCursorPosicion.substring(0, cursorPosicion) + "    " + textoCursorPosicion.substring(cursorPosicion);
-
-            txtEditorCodigo.setText(newTextoCursorPosicion);
-            txtEditorCodigo.setCaretPosition(cursorPosicion + 4);
+            try {
+                doc.insertString(cursorPosicion, "    ", null);
+                txtEditorCodigo.setCaretPosition(cursorPosicion + 4);
+            } catch (BadLocationException e) {
+                e.printStackTrace();
+            }
         }
     }//GEN-LAST:event_txtEditorCodigoKeyPressed
 

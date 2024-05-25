@@ -205,8 +205,30 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
             Document doc = txtEditorCodigo.getDocument();
 
             try {
-                doc.insertString(cursorPosicion, "    ", null);
-                txtEditorCodigo.setCaretPosition(cursorPosicion + 4);
+                if (evt.isShiftDown()) {
+                    String text = doc.getText(cursorPosicion - 4, 4);
+                    if (text.equals("    ")) {
+                        doc.remove(cursorPosicion - 4, 4);
+                        txtEditorCodigo.setCaretPosition(cursorPosicion - 4);
+                    }
+                } else {
+                    doc.insertString(cursorPosicion, "    ", null);
+                    txtEditorCodigo.setCaretPosition(cursorPosicion + 4);
+                }
+            } catch (BadLocationException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (evt.getKeyCode() == KeyEvent.VK_TAB && evt.getKeyCode() == KeyEvent.VK_SHIFT) {
+            evt.consume();
+            System.out.println("dadasd");
+            int cursorPosicion = txtEditorCodigo.getCaretPosition();
+            Document doc = txtEditorCodigo.getDocument();
+
+            try {
+                doc.remove(cursorPosicion, 4);
+                txtEditorCodigo.setCaretPosition(cursorPosicion - 4);
             } catch (BadLocationException e) {
                 e.printStackTrace();
             }

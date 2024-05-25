@@ -4,6 +4,9 @@ import analizador_lexico.AnalizadorLexicoUI;
 
 public class Main {
 
+    // Fernando Garibay Ceja.
+    // Joseph Ivan Quintero Carrasco.
+    
     public static void main(String[] args) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -22,6 +25,7 @@ public class Main {
             java.util.logging.Logger.getLogger(AnalizadorLexicoUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new AnalizadorLexicoUI().setVisible(true);
             }

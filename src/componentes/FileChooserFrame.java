@@ -75,6 +75,24 @@ public class FileChooserFrame {
         }
         return rutaSeleccionada;
     }
+    
+     public boolean borrarArhivo(){
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        frame.setVisible(true);
+        
+        while (archivo == null){
+            try{
+                Thread.sleep(100);
+            }catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+        }
+        
+        boolean success = archivo.delete();
+        archivo = null; //Reiniciamos la seleccion despues de borrar el archivo.
+        return success;
+    }
+    //Esta función nos permitirá seleccionar el archivo necesario.
 
     public static void main(String[] args) {
         String selectedFilePath = new FileChooserFrame().seleccionarRuta();

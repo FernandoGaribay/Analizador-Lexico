@@ -202,7 +202,7 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
             int cursorPosicion = txtEditorCodigo.getCaretPosition();
             String textoCursorPosicion = txtEditorCodigo.getText();
 
-            String newTextoCursorPosicion = textoCursorPosicion.substring(0, cursorPosicion) + "     " + textoCursorPosicion.substring(cursorPosicion);
+            String newTextoCursorPosicion = textoCursorPosicion.substring(0, cursorPosicion) + "    " + textoCursorPosicion.substring(cursorPosicion);
 
             txtEditorCodigo.setText(newTextoCursorPosicion);
             txtEditorCodigo.setCaretPosition(cursorPosicion + 4);

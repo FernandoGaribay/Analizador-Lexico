@@ -21,7 +21,8 @@ public class FileChooserFrame {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(new Dimension(700, 500));
         frame.setResizable(false);
-        frame.setUndecorated(true);
+        frame.setUndecorated(false);
+        frame.setLocationRelativeTo(null);
 
         fileChooser = new JFileChooser();
 

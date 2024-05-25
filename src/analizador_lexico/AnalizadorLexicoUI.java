@@ -46,8 +46,11 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
         tableAnalizadorLexico = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1200, 600));
+        setMaximumSize(new java.awt.Dimension(1200, 635));
+        setMinimumSize(new java.awt.Dimension(1200, 635));
+        setPreferredSize(new java.awt.Dimension(1200, 635));
         setResizable(false);
+        setSize(new java.awt.Dimension(1200, 635));
         getContentPane().setLayout(null);
 
         pnlEditorCodigo.setBackground(new java.awt.Color(255, 255, 255));
@@ -151,7 +154,11 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
         );
 
         getContentPane().add(pnlEditorCodigo);
-        pnlEditorCodigo.setBounds(0, 0, 900, 600);
+        pnlEditorCodigo.setBounds(0, 0, 900, 640);
+
+        pnlAnalizadorLexico.setMaximumSize(new java.awt.Dimension(300, 635));
+        pnlAnalizadorLexico.setMinimumSize(new java.awt.Dimension(300, 635));
+        pnlAnalizadorLexico.setPreferredSize(new java.awt.Dimension(300, 635));
 
         tableAnalizadorLexico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -170,19 +177,19 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
             pnlAnalizadorLexicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlAnalizadorLexicoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scrollAnalizadorLexico, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(scrollAnalizadorLexico, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         pnlAnalizadorLexicoLayout.setVerticalGroup(
             pnlAnalizadorLexicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlAnalizadorLexicoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scrollAnalizadorLexico, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addComponent(scrollAnalizadorLexico, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         getContentPane().add(pnlAnalizadorLexico);
-        pnlAnalizadorLexico.setBounds(900, 0, 300, 600);
+        pnlAnalizadorLexico.setBounds(900, 0, 300, 635);
 
         pack();
         setLocationRelativeTo(null);

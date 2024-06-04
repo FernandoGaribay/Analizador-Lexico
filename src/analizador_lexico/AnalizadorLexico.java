@@ -20,6 +20,7 @@ import static analizador_lexico.Estado.PARENTESIS;
 import automatas.Asignacion;
 import automatas.Identificador;
 import automatas.NumeroEntero;
+import automatas.PalabraReservada;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -34,7 +35,7 @@ public class AnalizadorLexico {
 
     static {
         ASIGNADOR.put('/', Estado.COMENTARIO);
-        ASIGNADOR.put('a', Estado.IDENTIFICADOR);
+        ASIGNADOR.put('a', Estado.PALABRA_RESERVADA);
         ASIGNADOR.put('1', Estado.NUMERO_ENTERO);
         ASIGNADOR.put('-', Estado.NUMERO_ENTERO);
         ASIGNADOR.put('=', Estado.ASIGNACION);
@@ -84,7 +85,17 @@ public class AnalizadorLexico {
 
                 break;
             case PALABRA_RESERVADA:
-                System.out.println("Estado actual: PALABRA_RESERVADA");
+                word = tokenActual.toString();
+                resultado = PalabraReservada.validarPalabraReservada(word);
+
+                if (resultado) {
+                    reiniciarAutomata();
+                    System.out.println("palabra reservada");
+                    System.out.println(resultado);
+                } else {
+                    estadoActual = IDENTIFICADOR;
+                    resultado = redireccionarAutomata(true);
+                }
                 break;
             case IDENTIFICADOR:
                 word = tokenActual.toString();
@@ -146,7 +157,6 @@ public class AnalizadorLexico {
                 System.out.println("Estado actual: LLAVE");
                 break;
         }
-
         return resultado;
     }
 

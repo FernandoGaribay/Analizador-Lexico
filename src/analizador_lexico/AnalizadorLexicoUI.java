@@ -15,10 +15,14 @@ import modelos_tablas.ModeloResultadoAnalizado;
 
 public class AnalizadorLexicoUI extends javax.swing.JFrame {
 
+    private AnalizadorLexico analizador;
+    
     public AnalizadorLexicoUI() {
         initComponents();
         clearCampos();
 
+        analizador = new AnalizadorLexico();
+        
         TextLineNumber tln = new TextLineNumber(txtEditorCodigo);
         scrollEditorCodigo.setRowHeaderView(tln);
     }
@@ -265,7 +269,9 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGuardarArchivoMousePressed
 
     private void btnAnalizarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnalizarMousePressed
-        JOptionPane.showMessageDialog(null, "* evento para iniciar el analisis del archivo *");
+//        JOptionPane.showMessageDialog(null, "* evento para iniciar el analisis del archivo *");
+        boolean resultado = analizador.analizar(txtEditorCodigo.getText());
+        System.out.println(resultado);
     }//GEN-LAST:event_btnAnalizarMousePressed
 
     private void btnClearMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClearMousePressed

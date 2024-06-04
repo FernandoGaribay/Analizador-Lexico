@@ -33,7 +33,7 @@ public class Incremento {
         transiciones.put(q3, q3Transitions);
     }
 
-    public static boolean validarIncrementa(String input) {
+    public static boolean validarIncremento(String input) {
         String currentState = q0;
         System.out.println("λ -> " + currentState);
         

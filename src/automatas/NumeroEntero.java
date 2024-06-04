@@ -22,6 +22,7 @@ public class NumeroEntero {
 
         HashMap<Character, String> q1Transitions = new HashMap<>();
         q1Transitions.put('1', q2);
+        q1Transitions.put('_', q3);
         transiciones.put(q1, q1Transitions);
 
         //Estado de aceptacion q2

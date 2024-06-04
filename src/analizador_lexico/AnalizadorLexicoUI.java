@@ -270,8 +270,8 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
 
     private void btnAnalizarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnalizarMousePressed
 //        JOptionPane.showMessageDialog(null, "* evento para iniciar el analisis del archivo *");
-        boolean resultado = analizador.analizar(txtEditorCodigo.getText());
-        System.out.println(resultado);
+        boolean resultado = analizador.analizar(txtEditorCodigo.getText() + " ");
+//        System.out.println(resultado);
     }//GEN-LAST:event_btnAnalizarMousePressed
 
     private void btnClearMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClearMousePressed

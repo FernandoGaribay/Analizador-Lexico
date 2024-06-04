@@ -1,6 +1,7 @@
 
 package automatas;
 
+import analizador_lexico.AnalizadorLexico;
 import java.util.HashMap;
 
 public class NumeroEntero {
@@ -22,7 +23,7 @@ public class NumeroEntero {
 
         HashMap<Character, String> q1Transitions = new HashMap<>();
         q1Transitions.put('1', q2);
-        q1Transitions.put('_', q3);
+        q1Transitions.put('-', q3);
         transiciones.put(q1, q1Transitions);
 
         //Estado de aceptacion q2
@@ -42,7 +43,15 @@ public class NumeroEntero {
         String currentState = q0;
         System.out.println("λ -> " + currentState);
         
-        //Funcion for
+        for (int i = 0; i < input.length(); i++) {
+            char c = (AnalizadorLexico.isNumber(input.charAt(i)) ? '1' : input.charAt(i));
+            if (!transiciones.get(currentState).containsKey(c)) {
+                System.out.println("AUTOMATA COMENTARIO: (CARACTER DESCONOCIDO) -> " + c);
+                return false;
+            }
+            currentState = transiciones.get(currentState).get(c);
+            System.out.println(c + " -> " + currentState);
+        }
         
         return currentState.equals(q2);
     }

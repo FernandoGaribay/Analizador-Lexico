@@ -41,6 +41,9 @@ public class ComentarioDeLinea {
         String currentState = q0;
         System.out.println("λ -> " + currentState);
         
+        //funcion for:
+        
+        
         return currentState.equals(q2);
     }
 }

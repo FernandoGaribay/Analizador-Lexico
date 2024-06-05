@@ -1,5 +1,6 @@
 package automatas;
 
+import analizador_lexico.AnalizadorLexico;
 import java.util.HashMap;
 
 public class OperadorRelacional {
@@ -24,10 +25,16 @@ public class OperadorRelacional {
 
         HashMap<Character, String> q1Transitions = new HashMap<>();
         q1Transitions.put('=', q3);
+        q1Transitions.put('<', q4);
+        q1Transitions.put('>', q4);
+        q1Transitions.put('!', q4);
         transiciones.put(q1, q1Transitions);
 
         HashMap<Character, String> q2Transitions = new HashMap<>();
         q2Transitions.put('=', q3);
+        q2Transitions.put('<', q4);
+        q2Transitions.put('>', q4);
+        q2Transitions.put('!', q4);
         transiciones.put(q2, q2Transitions);
 
         //Estado de aceptación
@@ -45,16 +52,25 @@ public class OperadorRelacional {
         q4Transitions.put('=', q4);
         q4Transitions.put('!', q4);
         transiciones.put(q4, q4Transitions);
-
-        /*
-        public static boolean validarOperadorRelacional(String input) {
-            String currentState = q0;
-            System.out.println("λ -> " + currentState);
-            
-            for (int i = 0; i < input.length(); i++){
-                char c = (analizador_lexico.)
-            }
-        }*/
     }
 
+    public static boolean validarOperadorRelacional(String input) {
+        String currentState = q0;
+        boolean estadosAceptacion = false;
+        System.out.println("λ -> " + currentState);
+
+        for (int i = 0; i < input.length(); i++) {
+            char c = input.charAt(i);
+            if (!transiciones.get(currentState).containsKey(c)) {
+                System.out.println("AUTOMATA COMENTARIO: (CARACTER DESCONOCIDO) -> " + c);
+                return false;
+            }
+            currentState = transiciones.get(currentState).get(c);
+            System.out.println(c + " -> " + currentState);
+        }
+        if (!currentState.equals(q2) && !currentState.equals(q4)) {
+            estadosAceptacion = true;
+        }
+        return estadosAceptacion;
+    }
 }

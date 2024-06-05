@@ -5,7 +5,6 @@ import static analizador_lexico.Estado.CADENA_CARACTERES;
 import static analizador_lexico.Estado.COMENTARIO;
 import static analizador_lexico.Estado.COMENTARIO_LINEA;
 import static analizador_lexico.Estado.DECREMENTO;
-import static analizador_lexico.Estado.FIN;
 import static analizador_lexico.Estado.IDENTIFICADOR;
 import static analizador_lexico.Estado.INCREMENTO;
 import static analizador_lexico.Estado.INICIO;
@@ -20,6 +19,9 @@ import static analizador_lexico.Estado.PARENTESIS;
 import automatas.Asignacion;
 import automatas.Identificador;
 import automatas.NumeroEntero;
+import automatas.OperadorAritmetico;
+import automatas.OperadorLogico;
+import automatas.OperadorRelacional;
 import automatas.PalabraReservada;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,9 +38,20 @@ public class AnalizadorLexico {
     static {
         ASIGNADOR.put('/', Estado.COMENTARIO);
         ASIGNADOR.put('a', Estado.PALABRA_RESERVADA);
+        ASIGNADOR.put('>', Estado.OPERADOR_RELACIONAL);
+        ASIGNADOR.put('<', Estado.OPERADOR_RELACIONAL);
+        ASIGNADOR.put('!', Estado.OPERADOR_RELACIONAL);
+        ASIGNADOR.put('=', Estado.OPERADOR_RELACIONAL);
+        ASIGNADOR.put('&', Estado.OPERADOR_LOGICO);
+        ASIGNADOR.put('|', Estado.OPERADOR_LOGICO);
+        ASIGNADOR.put('!', Estado.OPERADOR_LOGICO);
+        ASIGNADOR.put('+', Estado.OPERADOR_ARITMETICO);
+        ASIGNADOR.put('-', Estado.OPERADOR_ARITMETICO);
+        ASIGNADOR.put('*', Estado.OPERADOR_ARITMETICO);
+        ASIGNADOR.put('/', Estado.OPERADOR_ARITMETICO);
+        ASIGNADOR.put('%', Estado.OPERADOR_ARITMETICO);
         ASIGNADOR.put('1', Estado.NUMERO_ENTERO);
         ASIGNADOR.put('-', Estado.NUMERO_ENTERO);
-        ASIGNADOR.put('=', Estado.ASIGNACION);
     }
 
     public boolean analizar(String input) {
@@ -81,9 +94,6 @@ public class AnalizadorLexico {
         }
 
         switch (estadoActual) {
-            case INICIO:
-
-                break;
             case PALABRA_RESERVADA:
                 word = tokenActual.toString();
                 resultado = PalabraReservada.validarPalabraReservada(word);
@@ -101,19 +111,42 @@ public class AnalizadorLexico {
                 word = tokenActual.toString();
                 resultado = Identificador.validarIdentificador(word);
 
-                if (resultado) {
-                    reiniciarAutomata();
-                }
+                reiniciarAutomata();
                 System.out.println(resultado);
                 break;
             case OPERADOR_RELACIONAL:
-                System.out.println("Estado actual: OPERADOR_RELACIONAL");
+                word = tokenActual.toString();
+                resultado = OperadorRelacional.validarOperadorRelacional(word);
+
+                if (resultado) {
+                    reiniciarAutomata();
+                    System.out.println(resultado);
+                } else {
+                    estadoActual = ASIGNACION;
+                    System.out.println("cambio de estado -> " + estadoActual);
+                    resultado = redireccionarAutomata(true);
+                }
                 break;
             case OPERADOR_LOGICO:
-                System.out.println("Estado actual: OPERADOR_LOGICO");
+                word = tokenActual.toString();
+                resultado = OperadorLogico.validarOperadorLogico(word);
+
+                if (resultado) {
+                    reiniciarAutomata();
+                    System.out.println(resultado);
+                } else {
+                    estadoActual = Estado.OPERADOR_RELACIONAL;
+                    System.out.println("cambio de estado -> " + estadoActual);
+                    resultado = redireccionarAutomata(true);
+                }
+                System.out.println(resultado);
                 break;
             case OPERADOR_ARITMETICO:
-                System.out.println("Estado actual: OPERADOR_ARITMETICO");
+                word = tokenActual.toString();
+                resultado = OperadorAritmetico.validarOperadorAritmetico(word);
+
+                reiniciarAutomata();
+                System.out.println(resultado);
                 break;
             case INCREMENTO:
                 System.out.println("Estado actual: INCREMENTO");
@@ -125,9 +158,7 @@ public class AnalizadorLexico {
                 word = tokenActual.toString();
                 resultado = Asignacion.validarAsignacion(word);
 
-                if (resultado) {
-                    reiniciarAutomata();
-                }
+                reiniciarAutomata();
                 System.out.println(resultado);
                 break;
             case NUMERO_ENTERO:

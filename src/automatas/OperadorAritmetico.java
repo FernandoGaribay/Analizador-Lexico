@@ -1,5 +1,6 @@
 package automatas;
 
+import analizador_lexico.AnalizadorLexico;
 import java.util.HashMap;
 
 public class OperadorAritmetico {
@@ -85,7 +86,15 @@ public class OperadorAritmetico {
         System.out.println("λ -> " + currentState);
         boolean estadosAceptacion = false;
         
-        //Funcion for
+        for (int i = 0; i < input.length(); i++) {
+            char c = input.charAt(i);
+            if (!transiciones.get(currentState).containsKey(c)) {
+                System.out.println("AUTOMATA COMENTARIO: (CARACTER DESCONOCIDO) -> " + c);
+                return false;
+            }
+            currentState = transiciones.get(currentState).get(c);
+            System.out.println(c + " -> " + currentState);
+        }
         
         if(!currentState.equals(q0) || !currentState.equals(q6)){
             estadosAceptacion = true;

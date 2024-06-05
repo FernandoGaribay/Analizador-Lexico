@@ -1,6 +1,7 @@
 
 package automatas;
 
+import analizador_lexico.AnalizadorLexico;
 import java.util.HashMap;
 
 public class Parenteresis {
@@ -25,12 +26,20 @@ public class Parenteresis {
         transiciones.put(q1, q1Transitions);
     }
     
-    public static boolean validarParenteresis(String input) {
+    public static boolean validar(String input) {
         String currentState = q0;
         System.out.println("λ -> " + currentState);
         
-        //funcion for:
-        
+        for (int i = 0; i < input.length(); i++) {
+            char c = input.charAt(i);
+            
+            if (!transiciones.get(currentState).containsKey(c)) {
+                System.out.println("AUTOMATA COMENTARIO: (CARACTER DESCONOCIDO) -> " + c);
+                return false;
+            }
+            currentState = transiciones.get(currentState).get(c);
+            System.out.println(c + " -> " + currentState);
+        }
         return currentState.equals(q1);
     }
 }

@@ -17,5 +17,5 @@ public enum Estado {
     COMENTARIO_LINEA,
     PARENTESIS,
     LLAVE,
-    FIN
+    DESCONOCIDO
 }

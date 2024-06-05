@@ -39,12 +39,13 @@ public class NumeroEntero {
         transiciones.put(q3, q3Transitions);
     }
     
-    public static boolean validarNumeroEntero(String input) {
+    public static boolean validar(String input) {
         String currentState = q0;
         System.out.println("λ -> " + currentState);
         
         for (int i = 0; i < input.length(); i++) {
-            char c = (AnalizadorLexico.isNumber(input.charAt(i)) ? '1' : input.charAt(i));
+            char c = (AnalizadorLexico.esNumero(input.charAt(i)) ? '1' : input.charAt(i));
+            
             if (!transiciones.get(currentState).containsKey(c)) {
                 System.out.println("AUTOMATA COMENTARIO: (CARACTER DESCONOCIDO) -> " + c);
                 return false;

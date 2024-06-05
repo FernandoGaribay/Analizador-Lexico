@@ -36,17 +36,16 @@ public class Identificador {
 
     }
 
-    public static boolean validarIdentificador(String input) {
+    public static boolean validar(String input) {
         String currentState = q0;
         System.out.println("λ -> " + currentState);
-
+        
         // Iteramos sobre la entrada
         for (int i = 0; i < input.length(); i++) {
             char c = input.charAt(i);
-
             if (AnalizadorLexico.esLetra(c)) {
                 c = 'a';
-            } else if (AnalizadorLexico.isNumber(c)) {
+            } else if (AnalizadorLexico.esNumero(c)) {
                 c = '1';
             }
 

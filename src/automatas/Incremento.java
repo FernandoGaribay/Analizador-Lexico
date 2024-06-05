@@ -1,5 +1,6 @@
 package automatas;
 
+import analizador_lexico.AnalizadorLexico;
 import java.util.HashMap;
 
 public class Incremento {
@@ -33,12 +34,20 @@ public class Incremento {
         transiciones.put(q3, q3Transitions);
     }
 
-    public static boolean validarIncremento(String input) {
+    public static boolean validar(String input) {
         String currentState = q0;
         System.out.println("λ -> " + currentState);
         
-        //Funcion for
-        
+        for (int i = 0; i < input.length(); i++) {
+            char c = input.charAt(i);
+            
+            if (!transiciones.get(currentState).containsKey(c)) {
+                System.out.println("AUTOMATA COMENTARIO: (CARACTER DESCONOCIDO) -> " + c);
+                return false;
+            }
+            currentState = transiciones.get(currentState).get(c);
+            System.out.println(c + " -> " + currentState);
+        }
         return currentState.equals(q2);
     }
 

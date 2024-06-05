@@ -26,8 +26,7 @@ public class PalabraReservada {
         palabrasReservadas.put("print", true);
     }
 
-    public static boolean validarPalabraReservada(String input) {
+    public static boolean validar(String input) {
         return palabrasReservadas.containsKey(input);
     }
-
 }

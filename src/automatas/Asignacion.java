@@ -29,7 +29,7 @@ public class Asignacion {
         transiciones.put(q2, q2Transitions);
     }
 
-    public static boolean validarAsignacion(String input) {
+    public static boolean validar(String input) {
         String currentState = q0;
         System.out.println("λ -> " + currentState);
 

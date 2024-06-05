@@ -5,6 +5,7 @@ import componentes.LectorArchivos;
 import componentes.TextLineNumber;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -270,8 +271,13 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
 
     private void btnAnalizarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnalizarMousePressed
 //        JOptionPane.showMessageDialog(null, "* evento para iniciar el analisis del archivo *");
-        boolean resultado = analizador.analizar(txtEditorCodigo.getText() + " ");
-//        System.out.println(resultado);
+        analizador.analizar(txtEditorCodigo.getText() + " ");
+        List<Token> tokens = analizador.getTokens();
+     
+        System.out.println("\n");
+        for (Token token : tokens) {
+            System.out.println(token.toString());
+        }
     }//GEN-LAST:event_btnAnalizarMousePressed
 
     private void btnClearMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClearMousePressed

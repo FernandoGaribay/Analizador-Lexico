@@ -81,10 +81,9 @@ public class OperadorAritmetico {
         transiciones.put(q6, q6Transitions);
     }
     
-    public static boolean validarOperadorAritmetico(String input) {
+    public static boolean validar(String input) {
         String currentState = q0;
         System.out.println("λ -> " + currentState);
-        boolean estadosAceptacion = false;
         
         for (int i = 0; i < input.length(); i++) {
             char c = input.charAt(i);
@@ -95,12 +94,7 @@ public class OperadorAritmetico {
             currentState = transiciones.get(currentState).get(c);
             System.out.println(c + " -> " + currentState);
         }
-        
-        if(!currentState.equals(q0) || !currentState.equals(q6)){
-            estadosAceptacion = true;
-        }
-        
-        return estadosAceptacion;
+        return (!currentState.equals(q0) || !currentState.equals(q6));
     }
 
 }

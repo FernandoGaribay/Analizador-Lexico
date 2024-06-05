@@ -1,5 +1,6 @@
 package automatas;
 
+import analizador_lexico.AnalizadorLexico;
 import java.util.HashMap;
 
 public class NumeroDecimal {
@@ -56,17 +57,21 @@ public class NumeroDecimal {
         transiciones.put(q5, q5Transitions);
     }
 
-    public static boolean validarNumeroDecimal(String input) {
+    public static boolean validar(String input) {
         String currentState = q0;
         System.out.println("λ -> " + currentState);
-        boolean estadosAceptacion = false;
 
-        //Funcion for:
-        
-        if (currentState.equals(q2) || currentState.equals(q4)) {
-            estadosAceptacion = true;
+        for (int i = 0; i < input.length(); i++) {
+            char c = (AnalizadorLexico.esNumero(input.charAt(i))) ? '1' : input.charAt(i);
+
+            if (!transiciones.get(currentState).containsKey(c)) {
+                System.out.println("AUTOMATA COMENTARIO: (CARACTER DESCONOCIDO) -> " + c);
+                return false;
+            }
+            currentState = transiciones.get(currentState).get(c);
+            System.out.println(c + " -> " + currentState);
         }
 
-        return estadosAceptacion;
+        return currentState.equals(q2) || currentState.equals(q4);
     }
 }

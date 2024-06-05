@@ -65,10 +65,9 @@ public class OperadorLogico {
         transiciones.put(q6, q6Transitions);
     }
 
-    public static boolean validarOperadorLogico(String input) {
+    public static boolean validar(String input) {
         String currentState = q0;
         System.out.println("λ -> " + currentState);
-        boolean estadosAceptacion = false;
         
         for (int i = 0; i < input.length(); i++) {
             char c = input.charAt(i);
@@ -80,10 +79,6 @@ public class OperadorLogico {
             System.out.println(c + " -> " + currentState);
         }
 
-        if (currentState.equals(q2) || currentState.contains(q4) || currentState.contains(q5)) {
-            estadosAceptacion = true;
-        }
-        
-        return estadosAceptacion;
+        return (currentState.equals(q2) || currentState.contains(q4) || currentState.contains(q5));
     }
 }

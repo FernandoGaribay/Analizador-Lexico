@@ -54,7 +54,7 @@ public class OperadorRelacional {
         transiciones.put(q4, q4Transitions);
     }
 
-    public static boolean validarOperadorRelacional(String input) {
+    public static boolean validar(String input) {
         String currentState = q0;
         boolean estadosAceptacion = false;
         System.out.println("λ -> " + currentState);

@@ -3,12 +3,29 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/fernando/Documents/NetBeansProjects/AnalizadorLexico/src/automatas/OperadorRelacional.java</file>
-            <file>file:/home/fernando/Documents/NetBeansProjects/AnalizadorLexico/src/analizador_lexico/AnalizadorLexicoUI.java</file>
-            <file>file:/home/fernando/Documents/NetBeansProjects/AnalizadorLexico/src/automatas/OperadorAritmetico.java</file>
-            <file>file:/home/fernando/Documents/NetBeansProjects/AnalizadorLexico/src/main/Main.java</file>
-            <file>file:/home/fernando/Documents/NetBeansProjects/AnalizadorLexico/src/analizador_lexico/AnalizadorLexico.java</file>
-            <file>file:/home/fernando/Documents/NetBeansProjects/AnalizadorLexico/src/automatas/Comentario.java</file>
+            <file>file:/C:/Users/PC%20REINDEER/Documents/NetBeansProjects/Analizador-Lexico/src/automatas/NumeroEntero.java</file>
+            <file>file:/C:/Users/PC%20REINDEER/Documents/NetBeansProjects/Analizador-Lexico/src/automatas/Identificador.java</file>
+            <file>file:/C:/Users/PC%20REINDEER/Documents/NetBeansProjects/Analizador-Lexico/src/automatas/OperadorRelacional.java</file>
+            <file>file:/C:/Users/PC%20REINDEER/Documents/NetBeansProjects/Analizador-Lexico/src/componentes/FileChooserFrame.java</file>
+            <file>file:/C:/Users/PC%20REINDEER/Documents/NetBeansProjects/Analizador-Lexico/src/automatas/Comentario.java</file>
+            <file>file:/C:/Users/PC%20REINDEER/Documents/NetBeansProjects/Analizador-Lexico/src/componentes/LectorArchivos.java</file>
+            <file>file:/C:/Users/PC%20REINDEER/Documents/NetBeansProjects/Analizador-Lexico/src/analizador_lexico/AnalizadorLexicoUI.java</file>
+            <file>file:/C:/Users/PC%20REINDEER/Documents/NetBeansProjects/Analizador-Lexico/src/modelos_tablas/ModeloResultadoAnalizado.java</file>
+            <file>file:/C:/Users/PC%20REINDEER/Documents/NetBeansProjects/Analizador-Lexico/src/modelos_tablas/ModeloAnalizadorLexico.java</file>
+            <file>file:/C:/Users/PC%20REINDEER/Documents/NetBeansProjects/Analizador-Lexico/src/analizador_lexico/AnalizadorLexico.java</file>
+            <file>file:/C:/Users/PC%20REINDEER/Documents/NetBeansProjects/Analizador-Lexico/src/automatas/Incremento.java</file>
+            <file>file:/C:/Users/PC%20REINDEER/Documents/NetBeansProjects/Analizador-Lexico/src/automatas/CadenaDeCaracteres.java</file>
+            <file>file:/C:/Users/PC%20REINDEER/Documents/NetBeansProjects/Analizador-Lexico/src/automatas/Decremento.java</file>
+            <file>file:/C:/Users/PC%20REINDEER/Documents/NetBeansProjects/Analizador-Lexico/src/analizador_lexico/Token.java</file>
+            <file>file:/C:/Users/PC%20REINDEER/Documents/NetBeansProjects/Analizador-Lexico/src/automatas/OperadorAritmetico.java</file>
+            <file>file:/C:/Users/PC%20REINDEER/Documents/NetBeansProjects/Analizador-Lexico/src/analizador_lexico/Estado.java</file>
+            <file>file:/C:/Users/PC%20REINDEER/Documents/NetBeansProjects/Analizador-Lexico/src/main/Main.java</file>
+            <file>file:/C:/Users/PC%20REINDEER/Documents/NetBeansProjects/Analizador-Lexico/src/automatas/Asignacion.java</file>
+            <file>file:/C:/Users/PC%20REINDEER/Documents/NetBeansProjects/Analizador-Lexico/src/automatas/OperadorLogico.java</file>
+            <file>file:/C:/Users/PC%20REINDEER/Documents/NetBeansProjects/Analizador-Lexico/src/automatas/NumeroDecimal.java</file>
+            <file>file:/C:/Users/PC%20REINDEER/Documents/NetBeansProjects/Analizador-Lexico/src/automatas/Parenteresis.java</file>
+            <file>file:/C:/Users/PC%20REINDEER/Documents/NetBeansProjects/Analizador-Lexico/src/automatas/ComentarioDeLinea.java</file>
+            <file>file:/C:/Users/PC%20REINDEER/Documents/NetBeansProjects/Analizador-Lexico/src/automatas/Llave.java</file>
         </group>
     </open-files>
 </project-private>

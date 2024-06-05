@@ -119,122 +119,136 @@ public class AnalizadorLexico {
         switch (estadoActual) {
             case IDENTIFICADOR:
                 if (PalabraReservada.validar(token)) {
-                    tokens.add(new Token(Estado.PALABRA_RESERVADA.toString(), token));
+                    tokens.add(new Token(Estado.PALABRA_RESERVADA.toString(), token, true));
                     System.out.println(token + " -> VALIDADO\n");
                     return;
                 } else if (Identificador.validar(token)) {
-                    tokens.add(new Token(estadoActual.toString(), token));
+                    tokens.add(new Token(estadoActual.toString(), token, true));
                     System.out.println(token + " -> VALIDADO\n");
                     return;
                 }
+                tokens.add(new Token(estadoActual.toString(), token, false));
                 System.out.println(token + " -> INVALIDADO\n");
                 break;
             case CADENA_CARACTERES:
                 if (CadenaDeCaracteres.validar(token)) {
-                    tokens.add(new Token(estadoActual.toString(), token));
+                    tokens.add(new Token(estadoActual.toString(), token, true));
                     System.out.println(token + " -> VALIDADO\n");
                     return;
                 }
+                tokens.add(new Token(estadoActual.toString(), token, false));
                 System.out.println(token + " -> INVALIDADO\n");
                 break;
             case COMENTARIO:
                 if (Comentario.validar(token)) {
-                    tokens.add(new Token(estadoActual.toString(), token));
+                    tokens.add(new Token(estadoActual.toString(), token, true));
                     System.out.println(token + " -> VALIDADO\n");
                     return;
                 }
+                tokens.add(new Token(estadoActual.toString(), token, false));
                 System.out.println(token + " -> INVALIDADO\n");
                 break;
             case COMENTARIO_LINEA:
                 if (ComentarioDeLinea.validar(token)) {
-                    tokens.add(new Token(estadoActual.toString(), token));
+                    tokens.add(new Token(estadoActual.toString(), token, true));
                     System.out.println(token + " -> VALIDADO\n");
                     return;
                 }
+                tokens.add(new Token(estadoActual.toString(), token, false));
                 System.out.println(token + " -> INVALIDADO\n");
                 break;
             case INCREMENTO:
                 if (Incremento.validar(token)) {
-                    tokens.add(new Token(estadoActual.toString(), token));
+                    tokens.add(new Token(estadoActual.toString(), token, true));
                     System.out.println(token + " -> VALIDADO\n");
                     return;
                 }
+                tokens.add(new Token(estadoActual.toString(), token, false));
                 System.out.println(token + " -> INVALIDADO\n");
                 break;
             case DECREMENTO:
                 if (Decremento.validar(token)) {
-                    tokens.add(new Token(estadoActual.toString(), token));
+                    tokens.add(new Token(estadoActual.toString(), token, true));
                     System.out.println(token + " -> VALIDADO\n");
                     return;
                 }
+                tokens.add(new Token(estadoActual.toString(), token, false));
                 System.out.println(token + " -> INVALIDADO\n");
                 break;
             case ASIGNACION:
                 if (Asignacion.validar(token)) {
-                    tokens.add(new Token(estadoActual.toString(), token));
+                    tokens.add(new Token(estadoActual.toString(), token, true));
                     System.out.println(token + " -> VALIDADO\n");
                     return;
                 }
+                tokens.add(new Token(estadoActual.toString(), token, false));
                 System.out.println(token + " -> INVALIDADO\n");
                 break;
             case NUMERO_DECIMAL:
                 if (NumeroDecimal.validar(token)) {
-                    tokens.add(new Token(estadoActual.toString(), token));
+                    tokens.add(new Token(estadoActual.toString(), token, true));
                     System.out.println(token + " -> VALIDADO\n");
                     return;
                 }
+                tokens.add(new Token(estadoActual.toString(), token, false));
                 System.out.println(token + " -> INVALIDADO\n");
                 break;
             case NUMERO_ENTERO:
                 if (NumeroEntero.validar(token)) {
-                    tokens.add(new Token(estadoActual.toString(), token));
+                    tokens.add(new Token(estadoActual.toString(), token, true));
                     System.out.println(token + " -> VALIDADO\n");
                     return;
                 }
+                tokens.add(new Token(estadoActual.toString(), token, false));
                 System.out.println(token + " -> INVALIDADO\n");
                 break;
             case PARENTESIS:
                 if (Parenteresis.validar(token)) {
-                    tokens.add(new Token(estadoActual.toString(), token));
+                    tokens.add(new Token(estadoActual.toString(), token, true));
                     System.out.println(token + " -> VALIDADO\n");
                     return;
                 }
+                tokens.add(new Token(estadoActual.toString(), token, false));
                 System.out.println(token + " -> INVALIDADO\n");
                 break;
             case LLAVE:
                 if (Llave.validar(token)) {
-                    tokens.add(new Token(estadoActual.toString(), token));
+                    tokens.add(new Token(estadoActual.toString(), token, true));
                     System.out.println(token + " -> VALIDADO\n");
                     return;
                 }
+                tokens.add(new Token(estadoActual.toString(), token, false));
                 System.out.println(token + " -> INVALIDADO\n");
                 break;
             case OPERADOR_RELACIONAL:
                 if (OperadorRelacional.validar(token)) {
-                    tokens.add(new Token(estadoActual.toString(), token));
+                    tokens.add(new Token(estadoActual.toString(), token, true));
                     System.out.println(token + " -> VALIDADO\n");
                     return;
                 }
+                tokens.add(new Token(estadoActual.toString(), token, false));
                 System.out.println(token + " -> INVALIDADO\n");
                 break;
             case OPERADOR_LOGICO:
                 if (OperadorLogico.validar(token)) {
-                    tokens.add(new Token(estadoActual.toString(), token));
+                    tokens.add(new Token(estadoActual.toString(), token, true));
                     System.out.println(token + " -> VALIDADO\n");
                     return;
                 }
+                tokens.add(new Token(estadoActual.toString(), token, false));
                 System.out.println(token + " -> INVALIDADO\n");
                 break;
             case OPERADOR_ARITMETICO:
                 if (OperadorAritmetico.validar(token)) {
-                    tokens.add(new Token(estadoActual.toString(), token));
+                    tokens.add(new Token(estadoActual.toString(), token, true));
                     System.out.println(token + " -> VALIDADO\n");
                     return;
                 }
+                tokens.add(new Token(estadoActual.toString(), token, false));
                 System.out.println(token + " -> INVALIDADO\n");
                 break;
             default:
-                tokens.add(new Token(estadoActual.toString(), token));
+                tokens.add(new Token(estadoActual.toString(), token, false));
         }
     }
 

@@ -67,9 +67,7 @@ public class AnalizadorLexico {
 
         for (int i = 0; i < input.length(); i++) {
             char c = input.charAt(i);
-            if (esSaltoLinea(c)) {
-                System.out.println("salto");
-            } else if (esEspacio(c)) {
+            if (esEspacio(c) || esSaltoLinea(c)) {
                 if (tokenActual.length() > 0) {
                     estadoActual = determinarEstado(tokenActual.toString());
                     System.out.println(estadoActual);

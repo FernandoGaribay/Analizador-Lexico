@@ -38,7 +38,7 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
             @Override
             public java.awt.Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
                 final java.awt.Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-
+                c.setForeground(Color.BLACK);
                 Object valorColumna3 = table.getValueAt(row, 2);
                 if (valorColumna3 != null && valorColumna3.toString().equalsIgnoreCase("false")) {
                     c.setBackground(new Color(255, 208, 208));
@@ -282,8 +282,6 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
             }
         });
         hiloFileChooser.start();
-
-
     }//GEN-LAST:event_btnAbrirArchivoMousePressed
 
     private void btnGuardarArchivoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarArchivoMousePressed

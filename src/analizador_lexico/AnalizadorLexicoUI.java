@@ -71,6 +71,7 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
     private void clearCampos() {
         txtEditorCodigo.setText("");
         tableAnalizadorLexico.setModel(new ModeloAnalizadorLexico());
+        tableResultadoAnalizado.setModel(new ModeloResultadoAnalizado());
     }
 
     @SuppressWarnings("unchecked")
@@ -309,9 +310,8 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAnalizarMousePressed
 
     private void btnClearMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClearMousePressed
-        JOptionPane.showMessageDialog(null, "* evento para vaciar los componentes *");
-
         clearCampos();
+        JOptionPane.showMessageDialog(null, "*Campos limpios*");
     }//GEN-LAST:event_btnClearMousePressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

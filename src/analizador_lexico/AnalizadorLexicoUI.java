@@ -39,11 +39,12 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
             public java.awt.Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
                 final java.awt.Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
                 c.setForeground(Color.BLACK);
+
                 Object valorColumna3 = table.getValueAt(row, 2);
                 if (valorColumna3 != null && valorColumna3.toString().equalsIgnoreCase("false")) {
-                    c.setBackground(new Color(255, 208, 208));
-                } else {
-                    c.setBackground(table.getBackground());
+                    c.setBackground(new Color(255, 218, 218));
+                } else if (valorColumna3 != null && valorColumna3.toString().equalsIgnoreCase("true"))  {
+                    c.setBackground(new Color(226, 255, 229));
                 }
 
                 return c;
@@ -82,7 +83,6 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
         scrollEditorCodigo = new javax.swing.JScrollPane();
         txtEditorCodigo = new javax.swing.JTextPane();
         lblTitulo = new javax.swing.JLabel();
-        btnGuardarArchivo = new javax.swing.JLabel();
         btnAbrirArchivo = new javax.swing.JLabel();
         scrollResultadoAnalizador = new javax.swing.JScrollPane();
         tableResultadoAnalizado = new javax.swing.JTable();
@@ -93,9 +93,7 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
         tableAnalizadorLexico = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1200, 635));
         setMinimumSize(new java.awt.Dimension(1200, 635));
-        setPreferredSize(new java.awt.Dimension(1200, 635));
         setResizable(false);
         setSize(new java.awt.Dimension(1200, 635));
         getContentPane().setLayout(null);
@@ -113,15 +111,6 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
         lblTitulo.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitulo.setText("Analizador Léxico");
-
-        btnGuardarArchivo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnGuardarArchivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/saveFile.png"))); // NOI18N
-        btnGuardarArchivo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnGuardarArchivo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnGuardarArchivoMousePressed(evt);
-            }
-        });
 
         btnAbrirArchivo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnAbrirArchivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/openFile.png"))); // NOI18N
@@ -163,9 +152,7 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
                 .addGroup(pnlEditorCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(pnlEditorCodigoLayout.createSequentialGroup()
                         .addComponent(btnAbrirArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnGuardarArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(67, 67, 67)
                         .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAnalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -180,7 +167,6 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
             .addGroup(pnlEditorCodigoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlEditorCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnGuardarArchivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAnalizar)
                     .addComponent(btnClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlEditorCodigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -284,17 +270,6 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
         hiloFileChooser.start();
     }//GEN-LAST:event_btnAbrirArchivoMousePressed
 
-    private void btnGuardarArchivoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarArchivoMousePressed
-        // Crear un hilo secundario para esperar la seleccion del archivo
-        Thread hiloFileChooser = new Thread(() -> {
-            String archivoPath = new FileChooserFrame().seleccionarRuta();
-            if (archivoPath != null) {
-                System.out.println("Ruta seleccionada: " + archivoPath);
-            }
-        });
-        hiloFileChooser.start();
-    }//GEN-LAST:event_btnGuardarArchivoMousePressed
-
     private void btnAnalizarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAnalizarMousePressed
 //        JOptionPane.showMessageDialog(null, "* evento para iniciar el analisis del archivo *");
         analizador.analizar(txtEditorCodigo.getText() + " ");
@@ -316,7 +291,6 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
     private javax.swing.JLabel btnAbrirArchivo;
     private javax.swing.JLabel btnAnalizar;
     private javax.swing.JLabel btnClear;
-    private javax.swing.JLabel btnGuardarArchivo;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel pnlAnalizadorLexico;
     private javax.swing.JPanel pnlEditorCodigo;

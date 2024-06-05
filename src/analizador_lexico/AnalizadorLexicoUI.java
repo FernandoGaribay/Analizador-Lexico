@@ -131,14 +131,7 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
             }
         });
 
-        tableResultadoAnalizado.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
+        tableResultadoAnalizado.setModel(new ModeloResultadoAnalizado());
         tableResultadoAnalizado.setRowHeight(21);
         scrollResultadoAnalizador.setViewportView(tableResultadoAnalizado);
 
@@ -208,7 +201,6 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
 
         tableAnalizadorLexico.setModel(new ModeloResultadoAnalizado());
         tableAnalizadorLexico.setRowHeight(22);
-        tableAnalizadorLexico.getColumnModel().getColumn(2).setPreferredWidth(50); // Columna "VALIDACION"
         scrollAnalizadorLexico.setViewportView(tableAnalizadorLexico);
         tableAnalizadorLexico.revalidate();
         tableAnalizadorLexico.repaint();
@@ -309,6 +301,7 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
         analizador.analizar(txtEditorCodigo.getText() + " ");
         List<Token> tokens = analizador.getTokens();
         tableAnalizadorLexico.setModel(new ModeloAnalizadorLexico(tokens));
+        tableResultadoAnalizado.setModel(new ModeloResultadoAnalizado(tokens));
         System.out.println("\n");
         for (Token token : tokens) {
             System.out.println(token.toString());

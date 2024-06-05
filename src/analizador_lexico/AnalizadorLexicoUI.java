@@ -3,12 +3,19 @@ package analizador_lexico;
 import componentes.FileChooserFrame;
 import componentes.LectorArchivos;
 import componentes.TextLineNumber;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableColumn;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import modelos_tablas.ModeloAnalizadorLexico;
@@ -17,21 +24,53 @@ import modelos_tablas.ModeloResultadoAnalizado;
 public class AnalizadorLexicoUI extends javax.swing.JFrame {
 
     private AnalizadorLexico analizador;
-    
+
     public AnalizadorLexicoUI() {
         initComponents();
         clearCampos();
 
         analizador = new AnalizadorLexico();
-        
+
         TextLineNumber tln = new TextLineNumber(txtEditorCodigo);
         scrollEditorCodigo.setRowHeaderView(tln);
+
+        tableAnalizadorLexico.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+            @Override
+            public java.awt.Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                final java.awt.Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
+                Object valorColumna3 = table.getValueAt(row, 2);
+                if (valorColumna3 != null && valorColumna3.toString().equalsIgnoreCase("false")) {
+                    c.setBackground(new Color(255, 208, 208));
+                } else {
+                    c.setBackground(table.getBackground());
+                }
+
+                return c;
+            }
+        });
+
+        tableAnalizadorLexico.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 1) {
+                    JTable celda = (JTable) e.getSource();
+                    int fila = celda.getSelectedRow();
+
+                    StringBuilder filaDatos = new StringBuilder();
+                    filaDatos.append("Tipo:   ").append(celda.getValueAt(fila, 0)).append("\n");
+                    filaDatos.append("Valor:   ").append(celda.getValueAt(fila, 1)).append("\n");
+                    filaDatos.append("Validacion:   ").append(celda.getValueAt(fila, 2)).append("\n");
+
+                    JOptionPane.showMessageDialog(null, filaDatos.toString(), "Valores de la fila seleccionada", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        });
     }
 
     private void clearCampos() {
         txtEditorCodigo.setText("");
         tableAnalizadorLexico.setModel(new ModeloAnalizadorLexico());
-        tableResultadoAnalizado.setModel(new ModeloResultadoAnalizado());
     }
 
     @SuppressWarnings("unchecked")
@@ -167,16 +206,12 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
         pnlAnalizadorLexico.setMinimumSize(new java.awt.Dimension(300, 635));
         pnlAnalizadorLexico.setPreferredSize(new java.awt.Dimension(300, 635));
 
-        tableAnalizadorLexico.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
+        tableAnalizadorLexico.setModel(new ModeloResultadoAnalizado());
         tableAnalizadorLexico.setRowHeight(22);
+        tableAnalizadorLexico.getColumnModel().getColumn(2).setPreferredWidth(50); // Columna "VALIDACION"
         scrollAnalizadorLexico.setViewportView(tableAnalizadorLexico);
+        tableAnalizadorLexico.revalidate();
+        tableAnalizadorLexico.repaint();
 
         javax.swing.GroupLayout pnlAnalizadorLexicoLayout = new javax.swing.GroupLayout(pnlAnalizadorLexico);
         pnlAnalizadorLexico.setLayout(pnlAnalizadorLexicoLayout);
@@ -273,7 +308,7 @@ public class AnalizadorLexicoUI extends javax.swing.JFrame {
 //        JOptionPane.showMessageDialog(null, "* evento para iniciar el analisis del archivo *");
         analizador.analizar(txtEditorCodigo.getText() + " ");
         List<Token> tokens = analizador.getTokens();
-     
+        tableAnalizadorLexico.setModel(new ModeloAnalizadorLexico(tokens));
         System.out.println("\n");
         for (Token token : tokens) {
             System.out.println(token.toString());

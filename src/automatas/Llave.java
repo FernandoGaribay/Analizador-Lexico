@@ -9,6 +9,7 @@ public class Llave {
     
     private static final String q0 = "q0";
     private static final String q1 = "q1";
+    private static final String q2 = "q2";
     
     static {
         transiciones = new HashMap<>();
@@ -20,9 +21,16 @@ public class Llave {
         
         //Estado de Aceptacion q1
         HashMap<Character, String> q1Transitions = new HashMap<>();
-        q1Transitions.put('{', q1);
-        q1Transitions.put('}', q1);
+        q1Transitions.put('{', q2);
+        q1Transitions.put('}', q2);
         transiciones.put(q1, q1Transitions);
+        
+        HashMap<Character, String> q2Transitions = new HashMap<>();
+        q2Transitions.put('{', q2);
+        q2Transitions.put('}', q2);
+        transiciones.put(q2, q2Transitions);
+        
+        
     }
     
     public static boolean validar(String input) {
